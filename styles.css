@@ -20,3 +20,35 @@ header {
      border: 1px solid #ffffff;
      width: 80%;
  }
+ #sidebar {
+    overflow: hidden;
+    transition: all 0.3s;
+    transform-origin: right;
+}
+
+#resizer {
+    cursor: col-resize;
+}
+
+#search-history-title {
+    padding: 10px;
+}
+
+#search-section input {
+    padding: 10px;
+}
+
+#search-section button, .history-btn {
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+
+    #sidebar {
+        padding: 10px;
+    }
+}
+
+#city-events img {
+    height: 100px;
+} 
