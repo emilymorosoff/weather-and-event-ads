@@ -1,5 +1,5 @@
 
-![Weather Dashboard Logo]([link-to-image.png](https://github.com/emilymorosoff/weather-app/blob/eacf4cf755c64d12dd8d869c1240f69dbaf90a26/weather-app-image.png))
+![Weather Dashboard Logo](https://github.com/emilymorosoff/weather-app/blob/eacf4cf755c64d12dd8d869c1240f69dbaf90a26/weather-app-image.png)
 
 ## 🌤️ Welcome to the Weather and Events Dashboard 🌤️
 Explore current weather conditions and upcoming events in your city with our dashboard. Powered by OpenWeather and Ticketmaster APIs for real-time data.
