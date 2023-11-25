@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weather Dashboard</title>
-<link
-href="
-https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
-
-"
-rel="stylesheet"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
 />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="font-sans flex flex-col min-h-screen">
@@ -27,6 +25,9 @@ rel="stylesheet"
         </aside>
         <main class="flex-1 p-20">
             <section id="search-section">
+                <button id="current-location" class="bg-blue-400 text-white border-none cursor-pointer hover:bg-blue-700 hover:bg-hover-color">
+                    <i class="fa-solid fa-location-crosshairs" style="color: #ffffff;"></i>
+                </button>                
                 <input type="text" id="city-search" placeholder="Enter city name" class="mr-5"/>
                 <button id="search-button" class="bg-blue-400 text-white border-none cursor-pointer hover:bg-blue-700 hover:bg-hover-color">Search</button>
     <button id="clear-history" class="bg-blue-400 text-white border-none cursor-pointer hover:bg-blue-700 hover:bg-hover-color">...</button>
@@ -48,6 +49,8 @@ rel="stylesheet"
         <p>Weather Dashboard © 2023</p>
     </footer>
 <script src="script.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDss_ViSP7UPToaNmoIK2NIJGaOogAYf5M" async defer></script>
+
 
 <!-- Custom Modal for Confirmation -->
 <div id="confirmationModal" style="display:none;">

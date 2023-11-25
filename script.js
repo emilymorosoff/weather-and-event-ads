@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Function to show the confirmation modal
     function showConfirmationModal() {
@@ -235,3 +236,99 @@ function clearHistory() {
   localStorage.setItem("cities", JSON.stringify(cities)); // Update localStorage
   renderCities(); // Re-render the cities list
 }
+
+// Event listener for the current location button
+document.getElementById('current-location').addEventListener('click', function() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+      alert("Geolocation is not supported by this browser.");
+  }
+});
+
+// Modified showPosition function
+function showPosition(position) {
+  const latlng = { lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude) };
+  const geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({ 'location': latlng }, function(results, status) {
+      if (status === 'OK') {
+          if (results[0]) {
+              let city, state;
+              const addressComponents = results[0].address_components;
+              addressComponents.forEach(component => {
+                  if (component.types.includes("locality")) {
+                      city = component.long_name;
+                  }
+                  if (component.types.includes("administrative_area_level_1")) {
+                      state = component.short_name;
+                  }
+              });
+
+              // Updating the button's text with city and state
+              document.getElementById("current-location").textContent = city + ", " + state;
+          } else {
+              console.log('No results found');
+          }
+      } else {
+          console.log('Geocoder failed due to: ' + status);
+      }
+  });
+}
+
+// Existing showError function
+function showError(error) {
+  // ... (rest of the showError function)
+}
+
+// ... (previous code)
+
+// showError function (keep as it is)
+function showError(error) {
+  // ... (rest of the showError function)
+}
+
+// Modified showPosition function
+function showPosition(position) {
+  const latlng = { lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude) };
+  const geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({ 'location': latlng }, function(results, status) {
+      if (status === 'OK') {
+          if (results[0]) {
+              let city;
+              const addressComponents = results[0].address_components;
+              addressComponents.forEach(component => {
+                  if (component.types.includes("locality")) {
+                      city = component.long_name;
+                  }
+              });
+
+              // Set the value of the search input and trigger the search
+              const searchInput = document.getElementById("city-search");
+              searchInput.value = city;
+              getWeatherData(city).then((data) => {
+                if (data) {
+                  displayCurrentWeather(data);
+                  displayForecast(data);
+                }
+              });
+          } else {
+              console.log('No results found');
+          }
+      } else {
+          console.log('Geocoder failed due to: ' + status);
+      }
+  });
+}
+
+// Event listener for the current location button
+document.getElementById('current-location').addEventListener('click', function() {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+      alert("Geolocation is not supported by this browser.");
+  }
+});
+
+// ... (rest of the code)
